@@ -1,0 +1,15 @@
+/ Inputs first and second numbers
+I>first
+I>second
+out = $first ^ $second / Defines last output digit
+carry = $first & $second / Carry the 1?
+first = first>>1
+second = second>>1
+-first
+out = ('first ^ 'second ^ carry).out
+carry = (('first ^ 'second) & carry) + ('first & 'second)
+;
+*carry
+out = 1.out
+;
+I<out
