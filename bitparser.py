@@ -9,6 +9,11 @@ class FunctionalFunction(object):
 	def __add__(self, other):
 		return FunctionalFunction(compose(other, self))
 
+class ParserError(Exception):
+    def __init__(self):
+        message = "Parse Error"
+        super(ParserError, self).__init__(message)
+
 class ParseRunner:
 	def __init__(self, numArgs):
 		self.numArgs = numArgs
@@ -24,9 +29,35 @@ class ParseRunner:
 				if r is not None:
 					del tks[p:p+self.numArgs]
 					tks.insert(p,r)
-				p += 1
+				else:
+					p += 1
 			return tks
 		return FunctionalFunction(wrapped)
+
+def condParser(ts):
+	p = 1
+	stops = []
+	while p <= len(ts):
+		if ts[-p].tag == ENDCON:
+			stops.append(p)
+			#print(ts[-p], p)
+		elif ts[-p].tag == CONDSTATE:
+			try:
+				end = -stops.pop()
+			except IndexError:
+				raise ParserError
+			states = ts[1-p:end]
+			if all(t.tag in STATEMENT for t in states[1:]) and states[0].tag in EXPRESSION:
+				op = ts[-p].value
+				tok = Token(value=op,tag='CONDSTATES',args=states)
+				del ts[-p:end+1]
+				ts.insert(end+1,tok)
+				p = -end
+			else:
+				raise ParserError
+		p += 1
+	return ts
+
 
 @ParseRunner(3)
 def biopParser(tkens, pos):
@@ -77,5 +108,5 @@ def Parse(tokenlist):
 	while origr != repr(tokenlist):
 		origr = repr(tokenlist)
 		tokenlist = runParser(tokenlist)
-	tokenlist = asopParser(tokenlist)
+	tokenlist = condParser(asopParser(tokenlist))
 	return tokenlist
