@@ -11,7 +11,10 @@ class Token(object):
 			return ("Token(value=%s,tag=%s)" % (repr(self.value), repr(self.tag)))
 
 import sys
-def raiseErr(message):
+def raiseErr(message, pos=(0,0)):
+	raiseErrN(message + " on line %s, position %s." %(pos[0],pos[1]))
+
+def raiseErrN(message):
 	sys.stderr.write(message)
 	sys.exit(0)
 

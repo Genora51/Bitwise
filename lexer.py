@@ -3,8 +3,8 @@ import re
 from basefuncs import *
 
 def LexerError(pos, char):
-    message = "Illegal character on line %i, column %i: '%s'" %(pos[0],pos[1],char)
-    raiseErr(message)
+    message = "Illegal character '%s'" %(char)
+    raiseErr(message,pos)
 
 def lex(characters, token_exprs):
     pos = 0
@@ -19,7 +19,7 @@ def lex(characters, token_exprs):
             if match:
                 text = match.group(0)
                 if tag:
-                    token = Token(text, tag)
+                    token = Token(text, tag, args=lpos[:])
                     tokens.append(token)
                 break
         if not match:

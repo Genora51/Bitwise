@@ -1,6 +1,10 @@
 from basefuncs import *
 from functional import compose
 
+def ParserError(message, token):
+	#print(token)
+	raiseErr("ParserError: %s '%s'" %(message, token.value), token.args)
+
 class FunctionalFunction(object):
 	def __init__(self, func):
 		self.func = func
@@ -32,15 +36,19 @@ class ParseRunner:
 def condParser(ts):
 	p = 1
 	stops = []
+	toks = []
 	while p <= len(ts):
-		if ts[-p].tag == ENDCON:
+		tok = ts[-p]
+		if tok.tag == ENDCON:
 			stops.append(p)
+			toks.append(tok)
 			#print(ts[-p], p)
-		elif ts[-p].tag == CONDSTATE:
+		elif tok.tag == CONDSTATE:
 			try:
 				end = -stops.pop()
+				toks.pop()
 			except IndexError:
-				raiseErr("ParserError: Unmatched Conditional")
+				ParserError("Unmatched Conditional",ts[-p])
 			states = ts[1-p:end]
 			if all(t.tag in STATEMENT for t in states[1:]) and states[0].tag in EXPRESSION:
 				op = ts[-p].value
@@ -49,8 +57,10 @@ def condParser(ts):
 				ts.insert(end+1,tok)
 				p = -end
 			else:
-				raise ParserError
+				ParserError("Non-statement in the conditional starting", tok)
 		p += 1
+	if stops != []:
+		ParserError("Unmatched Token", toks.pop())
 	return ts
 
 
@@ -104,4 +114,13 @@ def Parse(tokenlist):
 		origr = repr(tokenlist)
 		tokenlist = runParser(tokenlist)
 	tokenlist = condParser(asopParser(tokenlist))
+	tst = [a for a in tokenlist if a.tag in (LPAREN, RPAREN)]
+	if tst != []:
+		ParserError("Unmatched Parenthesis", tst[0])
+	tst = [a for a in tokenlist if a.tag not in STATEMENT + ["CONDSTATE", "ENDCON"]]
+	if tst != []:
+		if tst[0].tag.endswith("EXP"):
+			raiseErrN("ParserError: Unused Expression with Operation '%s'"%(tst[0].value))
+		else:
+			ParserError("Unused Token",tst[0])
 	return tokenlist
