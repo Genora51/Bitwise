@@ -33,6 +33,7 @@ class ParseRunner:
 			return tks
 		return FunctionalFunction(wrapped)
 
+@FunctionalFunction
 def condParser(ts):
 	p = 1
 	stops = []
@@ -107,13 +108,14 @@ def ioStateParser(tkens, pos):
 	else: return None
 
 runParser = uniopParser + ioStateParser + biopParser + parenParser
+stateParse = asopParser + condParser
 
 def Parse(tokenlist):
 	origr = ''
 	while origr != repr(tokenlist):
 		origr = repr(tokenlist)
 		tokenlist = runParser(tokenlist)
-	tokenlist = condParser(asopParser(tokenlist))
+	tokenlist = stateParse(tokenlist)
 	tst = [a for a in tokenlist if a.tag in (LPAREN, RPAREN)]
 	if tst != []:
 		ParserError("Unmatched Parenthesis", tst[0])
