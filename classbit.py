@@ -35,6 +35,9 @@ class Bit(object):
 			newst = bin(int(self[a].st,2)&int(bit[a].st,2))[2:] + newst
 		return Bit(newst)
 
+	def __int__(self):
+		return int(self.st,2)
+
 	def __xor__(self, bit):
 		newst = ''
 		ln = max(len(self), len(bit))
