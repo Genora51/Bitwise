@@ -68,3 +68,6 @@ def stateRun(s, varlist):
 			print(expEval(s.args))
 	else:
 		doCond(s, varlist)
+
+def doCond(st, varl):
+	pass
