@@ -27,6 +27,13 @@ inputs = {
 	'H<' : 'Hex',
 	'<' : 'Binary'
 }
+inputf = {
+	'I<' : lambda x: bin(int(x))[2:],
+	'S<' : lambda st: ''.join(format(ord(x), 'b') for x in st),
+	'H<' : lambda x: bin(int(x,16))[2:],
+	'<' : lambda x: x
+}
+
 
 class vl(dict):
 	def __getitem__(self, index):
@@ -63,7 +70,8 @@ def stateRun(s, varlist):
 	elif s.tag == 'IOSTATE':
 		v = s.value
 		if v[-1] == '<':
-			varlist[s.args.value] = input(inputs[v] + ': ')
+			a =inputf[v](input(inputs[v] + ': '))
+			varlist[s.args.value] = Bin(a)
 		else:
 			print(expEval(s.args))
 	else:
