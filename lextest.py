@@ -20,5 +20,5 @@ print('PARSED CODE:')
 parsed = Parse(tokns)
 for tokenl in parsed:
 	print(tokenl)
-#input()
+input()
 #Should print parsed code

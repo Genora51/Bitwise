@@ -2,10 +2,9 @@ import sys
 import re
 from basefuncs import *
 
-class LexerError(Exception):
-    def __init__(self, pos, char):
-        message = "Illegal character on line %i, column %i: '%s'" %(pos[0],pos[1],char)
-        super(LexerError, self).__init__(message)
+def LexerError(pos, char):
+    message = "Illegal character on line %i, column %i: '%s'" %(pos[0],pos[1],char)
+    raiseErr(message)
 
 def lex(characters, token_exprs):
     pos = 0
@@ -24,7 +23,7 @@ def lex(characters, token_exprs):
                     tokens.append(token)
                 break
         if not match:
-            raise LexerError(lpos, characters[pos])
+            LexerError(lpos, characters[pos])
         else:
             #print([text])
             posn = match.end(0)

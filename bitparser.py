@@ -9,11 +9,6 @@ class FunctionalFunction(object):
 	def __add__(self, other):
 		return FunctionalFunction(compose(other, self))
 
-class ParserError(Exception):
-    def __init__(self):
-        message = "Parse Error"
-        super(ParserError, self).__init__(message)
-
 class ParseRunner:
 	def __init__(self, numArgs):
 		self.numArgs = numArgs
@@ -45,7 +40,7 @@ def condParser(ts):
 			try:
 				end = -stops.pop()
 			except IndexError:
-				raise ParserError
+				raiseErr("ParserError: Unmatched Conditional")
 			states = ts[1-p:end]
 			if all(t.tag in STATEMENT for t in states[1:]) and states[0].tag in EXPRESSION:
 				op = ts[-p].value

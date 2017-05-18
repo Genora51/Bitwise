@@ -10,6 +10,11 @@ class Token(object):
 		else:
 			return ("Token(value=%s,tag=%s)" % (repr(self.value), repr(self.tag)))
 
+import sys
+def raiseErr(message):
+	sys.stderr.write(message)
+	sys.exit(0)
+
 BIOP = 'BIOP'
 UNIOP = 'UNIOP'
 IOSTATE = 'IOSTATE'
