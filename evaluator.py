@@ -67,4 +67,4 @@ def stateRun(s, varlist):
 		else:
 			print(expEval(s.args))
 	else:
-		print('CONDSTATE')
+		doCond(s, varlist)
