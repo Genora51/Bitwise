@@ -15,7 +15,7 @@ def interpret(text):
 
 def runFile(fileName):
 	dirf = os.path.dirname(os.path.realpath(fileName))
-	cach = r"%s\__bitcache__\%sc"%(dirf,fileName)
+	cach = r"%s\__bitcache__\%sc"%(dirf,os.path.basename(fileName))
 	mtxt = open(fileName).read()
 	if os.path.isfile(cach):
 		hashed, ptext = open(cach).read().split('\n')
