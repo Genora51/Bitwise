@@ -14,13 +14,13 @@ print('LEXED CODE:')
 tokns = lex(data, tokens)
 for tokenl in tokns:
 	print(tokenl)
-#input('----------------')
+input('\n----------------\n')
 
 # Parses the lexed code
 print('PARSED CODE:')
 parsed = Parse(tokns)
 for tokenl in parsed:
 	print(tokenl)
-input()
 #Should print parsed code
+input('\n----------------\n')
 runStates(parsed)
