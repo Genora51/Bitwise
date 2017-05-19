@@ -1,4 +1,4 @@
-from basefuncs import *
+from bitwise.basefuncs import *
 from functional import compose
 
 def ParserError(message, token):

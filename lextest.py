@@ -1,8 +1,8 @@
 #import statements
-from lexer import lex
-from basefuncs import tokens
-from bitparser import Parse
-from evaluator import runStates
+from bitwise.lexer import lex
+from bitwise.basefuncs import tokens
+from bitwise.bitparser import Parse
+from bitwise.evaluator import runStates
 
 #load file
 with open('add.bit') as f:

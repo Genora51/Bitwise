@@ -1,7 +1,7 @@
 #import statements
-from lexer import lex
-from basefuncs import tokens
-from bitparser import Parse
+from bitwise.lexer import lex
+from bitwise.basefuncs import tokens
+from bitwise.bitparser import Parse
 
 exp = '!101'
 

@@ -1,5 +1,5 @@
-from basefuncs import *
-from classbit import Bit
+from bitwise.basefuncs import *
+from bitwise.classbit import Bit
 
 biops = {
 	'+': lambda a,b: a|b,

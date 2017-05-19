@@ -1,6 +1,6 @@
 import sys
 import re
-from basefuncs import *
+from bitwise.basefuncs import *
 
 def LexerError(pos, char):
     message = "Illegal character '%s'" %(char)
