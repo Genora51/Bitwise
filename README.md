@@ -21,4 +21,4 @@ To run a file in bitwise, use this command:
     python bitwise.py [filename.bit]
 
 If not run from the bitwise folder, replace `bitwise.py` with the full (or relative path of the `bitwise.py` file).
-Equally, if python is not in your %PATH% (i.e. not a valid command), replace `python` with the path of your `python.exe`.
+Equally, if python is not in your `%PATH%` (i.e. not a valid command), replace `python` with the path of your `python.exe`.
