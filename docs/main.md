@@ -33,7 +33,9 @@ Variables are accessed simply by their identifiers, according to the rules laid 
 There are only a few unary operators in Bitwise, but each serves an important function:
 
 - `!` : The `NOT` operator. E.g. `!101` = `010`, or 2 in decimal;
-- `#` : The right-strip operator. Removes the first digit
-- `$` : The `NOT` operator. E.g. `!101` = `010`, or 2 in decimal;
-- `£` : The `NOT` operator. E.g. `!101` = `010`, or 2 in decimal;
+- `#` : The right-strip operator.
+Removes the first digit of a number e.g. `#1101` = `101`
+- `$` : Returns the last digit of a number e.g. `$1110` = `0`
+- `£` : Returns the first digit of a number e.g. `£100` = `1`
+Bear in mind that this does not always return 1, because binary numbers in Bitwise are not automatically stripped of leading zeros.
 - `'` : The `NOT` operator. E.g. `!101` = `010`, or 2 in decimal;
