@@ -13,3 +13,12 @@ A programming language that only uses binary operations.
 ## Features
 
 Bitwise consists of a few logical operators (`^`,`!`,`&`, etc.), some basic input/output, a few variables, and some control structures. And that's about it. Apart from input and output, all calculation must be done with binary. View the docs at [docs/main.md](docs/main.md).
+
+## Running files
+
+To run a file in bitwise, use this command:
+
+    python bitwise.py [filename.bit]
+
+If not run from the bitwise folder, replace `bitwise.py` with the full (or relative path of the `bitwise.py` file).
+Equally, if python is not in your %PATH% (i.e. not a valid command), replace `python` with the path of your `python.exe`.
