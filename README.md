@@ -12,4 +12,4 @@ A programming language that only uses binary operations.
 
 ## Features
 
-Bitwise consists of a few logical operators (`^`,`!`,`&`, etc.), some basic input/output, a few variables, and some control structures. And that's about it. Apart from input and output, all calculation must be done with binary. View the docs at [docs/master](docs/master).
+Bitwise consists of a few logical operators (`^`,`!`,`&`, etc.), some basic input/output, a few variables, and some control structures. And that's about it. Apart from input and output, all calculation must be done with binary. View the docs at [docs/main.md](docs/main.md).
