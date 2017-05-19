@@ -33,6 +33,12 @@ inputf = {
 	'H<' : lambda x: bin(int(x,16))[2:],
 	'<' : lambda x: x
 }
+outputf = {
+	'I>' : int,
+	'S>' : lambda bits: int(bits).to_bytes((int(bits).bit_length() + 7) // 8, 'big').decode(),
+	'H>' : lambda x: hex(int(x))[2:],
+	'>' : lambda x: x.st
+}
 
 
 class vl(dict):
@@ -73,9 +79,24 @@ def stateRun(s, varlist):
 			a =inputf[v](input(inputs[v] + ': '))
 			varlist[s.args.value] = Bin(a)
 		else:
-			print(expEval(s.args).st)
+			print(outputf[v](expEval(s.args)))
 	else:
 		doCond(s, varlist)
 
 def doCond(st, varl):
-	pass
+	toch = expEval(st.args[0])
+	if st.value == '-':
+		for q in range(len(toch)):
+			varl['"'] = Bit(bin(q)[2:])
+			runStates(st.args[1:],varl)
+	elif st.value == '*':
+		if int(toch):
+			runStates(st.args[1:],varl)
+	else:
+		for p in range(len(toch))
+			varl['"'] = Bit(bin(len(toch) - p - 1)[2:])
+			runStates(st.args[1:],varl)
+
+def runStates(tls, varls=vl()):
+	for t in tls:
+		stateRun(t,vl)

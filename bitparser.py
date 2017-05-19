@@ -18,6 +18,7 @@ class ParseRunner:
 		self.numArgs = numArgs
 
 	def __call__(self, func):
+		@FunctionalFunction
 		def wrapped(tks):
 			p = 0
 			while p < len(tks):# - self.numArgs:
@@ -31,7 +32,7 @@ class ParseRunner:
 				else:
 					p += 1
 			return tks
-		return FunctionalFunction(wrapped)
+		return wrapped
 
 @FunctionalFunction
 def condParser(ts):

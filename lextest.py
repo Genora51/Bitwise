@@ -2,6 +2,7 @@
 from lexer import lex
 from basefuncs import tokens
 from bitparser import Parse
+from evaluator import runStates
 
 #load file
 with open('add.bit') as f:
@@ -20,5 +21,6 @@ print('PARSED CODE:')
 parsed = Parse(tokns)
 for tokenl in parsed:
 	print(tokenl)
-#input()
+input()
 #Should print parsed code
+runStates(parsed)
