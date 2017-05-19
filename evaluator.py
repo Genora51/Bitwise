@@ -73,7 +73,7 @@ def stateRun(s, varlist):
 			a =inputf[v](input(inputs[v] + ': '))
 			varlist[s.args.value] = Bin(a)
 		else:
-			print(expEval(s.args))
+			print(expEval(s.args).st)
 	else:
 		doCond(s, varlist)
 
