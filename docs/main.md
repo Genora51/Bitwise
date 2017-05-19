@@ -34,9 +34,29 @@ There are only a few unary operators in Bitwise, but each serves an important fu
 
 - `!` : The `NOT` operator. E.g. `!101` = `010`, or 2 in decimal;
 - `#` : The right-strip operator.
-Removes the first digit of a number e.g. `#1101` = `101`
+  Removes the first digit of a number e.g. `#1101` = `101`
 - `$` : Returns the last digit of a number e.g. `$1110` = `0`
-- `£` : Returns the first digit of a number e.g. `£100` = `1`.
+- `£` : Returns the first digit of a number e.g. `£100` = `1`
 
-  Bear in mind that this does not always return 1, because binary numbers in Bitwise are not automatically stripped of leading zeros.
-- `'` : The `NOT` operator. E.g. `!101` = `010`, or 2 in decimal;
+  *Bear in mind that this does not always return 1, because binary numbers in Bitwise are not automatically stripped of leading zeros.*
+- `'` : This is largely used in loops to reference a counter.
+  `'n` refers to digit `"` of `n`, where `"` is the loop counter variable.
+  This is equivalent to the expression `n@"`
+
+## Binary Operators (pun intended)
+
+Binary operators take 2 expressions as input: a left side and a right side.
+
+- `+` : The `OR` operator. E.g. `1100 + 1010` = `1110`
+- `&` : The `AND` operator. E.g. `1100 & 1010` = `1000`
+- `^` : The `XOR` operator. E.g. `1100 ^ 1010` = `0110`
+
+Each of these has an opposite, equivalent to applying the `!` operator to the resultant number:
+
+- `!+` : The `NOR` operator. E.g. `1100 !+ 1010` = `0001`
+- `!&` : The `NAND` operator. E.g. `1100 !& 1010` = `0111`
+- `!^`: The `NXOR` operator. E.g. `1100 !^ 1010` = `1001`
+
+Other operators:
+
+- 
