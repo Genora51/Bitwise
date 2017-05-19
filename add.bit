@@ -5,7 +5,7 @@ out = $first ^ $second / Defines last output digit
 carry = $first & $second / Carry the 1?
 first = first>>1
 second = second>>1
--first
+-(first_second)
 out = ('first ^ 'second ^ carry).out
 carry = (('first ^ 'second) & carry) + ('first & 'second)
 ;
