@@ -65,7 +65,7 @@ class Bit(object):
 		return Bit(nst)
 
 	def mxl(self,other):
-		if len(self) > len(other):
+		if int(self) > int(other):
 			return Bit(self.st)
 		else:
 			return Bit(other.st)
