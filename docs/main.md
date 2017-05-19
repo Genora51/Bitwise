@@ -59,4 +59,13 @@ Each of these has an opposite, equivalent to applying the `!` operator to the re
 
 Other operators:
 
-- 
+- `>>` : The right shift operator.
+  `a >> b` is equivalent to a/2<sup>b</sup> (rounded down) e.g. `10110 >> 11` = `10`
+- `<<` : The left shift operator.
+  `a << b` is equivalent to a\*2<sup>b</sup> e.g. `101 << 11` = `101000`
+- `.` : The concatenation operator e.g. `101 . 111` = `101111`
+- `@` : The position operator.
+  `a@b` returns the digit of a at index b, starting from the units digit.
+  E.g. `100110 @ 11` = `1` (the third digit from the right)
+- `_` : The max operator.
+  Returns the maximum of its operands e.g. `11_1001` = `1001`
