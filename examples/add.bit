@@ -11,7 +11,7 @@ second = second>>1
 out = ('first ^ 'second ^ carry).out
 carry = (('first ^ 'second) & carry) + ('first & 'second)
 ;
-*carry
+?carry
 out = 1.out
 ;
 I<out
