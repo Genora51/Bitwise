@@ -103,16 +103,24 @@ def uniopParser(tkens, pos):
 		return Token(value=tkens[pos].value, tag='UNIOPEXP', args=tkens[pos+1])
 	else: return None
 
-@ParseRunner(2)
-def ioStateParser(tkens, pos):
-	if (tkens[pos].tag==IOSTATE and 
-		(tkens[pos+1].tag==ID or
-			(tkens[pos].value[-1]=='<' and tkens[pos+1].tag in EXPRESSION))):
+@ParseRunner(2):
+def iStateParser(tkens, pos):
+	if (tkens[pos].tag==IOSTATE and
+		tkens[pos].value[-1]=='>' and
+		tkens[pos+1].tag==ID):
 		return Token(value=tkens[pos].value, tag='IOSTATES', args=tkens[pos+1])
 	else: return None
 
-runParser = uniopParser + ioStateParser + biopParser + parenParser
-stateParse = asopParser + condParser
+@ParseRunner(2)
+def oStateParser(tkens, pos):
+	if (tkens[pos].tag==IOSTATE and
+		tkens[pos].value[-1]=='<' and
+		tkens[pos+1].tag in EXPRESSION):
+		return Token(value=tkens[pos].value, tag='IOSTATES', args=tkens[pos+1])
+	else: return None
+
+runParser = uniopParser + iStateParser + biopParser + parenParser
+stateParse = oStateParser + asopParser + condParser
 
 def Parse(tokenlist):
 	origr = ''
