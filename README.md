@@ -1,4 +1,5 @@
-# Bitwise
+<span style="text-align:center;"><img src="https://s9.postimg.org/7lk98rhpb/logo.png" width=512></span>
+
 A programming language that only uses binary operations.
 
 ## Bitwise in a nutshell
