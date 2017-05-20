@@ -25,3 +25,5 @@ If not run from the bitwise folder, replace `bitwise.py` with the full (or relat
 Equally, if python is not in your `%PATH%` (i.e. not a valid command), replace `python` with the path of your `python.exe`.
 
 `[filename.bit]` should be replaced with the path or name of the bitwise program you wish to run.
+
+Icons made by [Freepik](http://www.freepik.com) from [www.flaticon.com](http://www.flaticon.com) are licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
