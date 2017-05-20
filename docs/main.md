@@ -77,4 +77,10 @@ Input/output statements take a very similar format to each other.
 ### Input
 Input statements take the form `I> setVar`, where `setVar` is the variable to be set.
 
-There are 4 input commands
+There are 4 input commands:
+- `>`: Takes in a binary number e.g. `1001`
+- `I>`: Takes in a decimal integer and converts it to binary e.g. `6` &rarr; `110`
+- `H>`: Takes in a hexadecimal integer and converts it to binary e.g. `F3` &rarr; `11110011`
+- `S>`: Takes in a string and converts it to its ASCII binary representation e.g. `a` &rarr; `01100001`
+
+### Output
