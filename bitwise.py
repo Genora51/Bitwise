@@ -41,5 +41,15 @@ def parsNo(mtxt,dirs,cach):
 	return parsed
 
 if __name__ == '__main__':
-	import sys
-	runFile(sys.argv[1])
+	import argparse
+	# ...
+	parser = argparse.ArgumentParser(
+	    description="Runs a Bitwise (.bit) program."
+	)
+	parser.add_argument(
+	    "program",
+	    help="The path of the program to be run."
+	)
+
+	args = parser.parse_args()
+	runFile(args.program)
