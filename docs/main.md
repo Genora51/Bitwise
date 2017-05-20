@@ -1,6 +1,6 @@
 # Documentation
 
-Bitwise is a surprisingly simple language in terms of format.
+Bitwise is a surprisingly simple language in terms of format. But that's about where it ends in terms of simplicity.
 
 ## Whitespace
 There are no whitespace restrictions of any kind (apart from comments, which end at a line break).
@@ -69,3 +69,12 @@ Other operators:
   E.g. `100110 @ 11` = `1` (the third digit from the right)
 - `_` : The max operator.
   Returns the maximum of its operands e.g. `11_1001` = `1001`
+
+## Input/Output
+
+Input/output statements take a very similar format to each other.
+
+### Input
+Input statements take the form `I> setVar`, where `setVar` is the variable to be set.
+
+There are 4 input commands
