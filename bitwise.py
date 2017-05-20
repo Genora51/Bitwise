@@ -53,3 +53,4 @@ if __name__ == '__main__':
 
 	args = parser.parse_args()
 	runFile(args.program)
+	input('Press any key to continue...')
