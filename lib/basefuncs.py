@@ -37,7 +37,7 @@ tokens = [
 	(r"(!?[+^&])|>>|<<|\.|@|_",BIOP),
 	(r"[IHS]?[<>]",IOSTATE),
 	(r"[!#'$£]", UNIOP),
-	(r"[~\-*]", CONDSTATE),
+	(r"[~\-?]", CONDSTATE),
 	(r"\;", ENDCON),
 	(r"=",ASOP),
 	(r"\(", LPAREN),

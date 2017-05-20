@@ -93,7 +93,7 @@ def doCond(st, varl):
 		for q in range(len(toch)):
 			varl['"'] = Bit(bin(q)[2:])
 			runStates(st.args[1:],varl)
-	elif st.value == '*':
+	elif st.value == '?':
 		if int(toch):
 			runStates(st.args[1:],varl)
 	else:
