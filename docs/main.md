@@ -153,7 +153,7 @@ The program below iterates over the number `1011` and prints each digit in order
 
 	a = 1011
 	~a
-	 < 'a
+		< 'a
 	;
 
 This program would output:
