@@ -30,7 +30,7 @@ inputs = {
 }
 inputf = {
 	'I>' : lambda x: bin(int(x))[2:],
-	'S>' : lambda st: ''.join(format(ord(x), 'b') for x in st),
+	'S>' : lambda st: ''.join(format(ord(x), 'b').zfill(8) for x in st),
 	'H>' : lambda x: bin(int(x,16))[2:],
 	'>' : lambda x: x
 }
