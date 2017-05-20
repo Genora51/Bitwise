@@ -1,5 +1,8 @@
 from .basefuncs import *
-from functional import compose
+try:
+	from funnctional import compose
+except ImportError:
+	raiseErrN("""You need functional!\nInstall it from http://pypi.python.org/pypi/functional\nor run pip install functional.""")
 
 def ParserError(message, token):
 	#print(token)
