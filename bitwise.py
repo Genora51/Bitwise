@@ -42,9 +42,16 @@ def parsNo(mtxt,dirs,cach):
 
 if __name__ == '__main__':
 	import argparse
+
 	# ...
 	parser = argparse.ArgumentParser(
 	    description="Runs a Bitwise (.bit) program."
+	)
+	parser.add_argument(
+	    "-i",
+	    "--inputend",
+	    action="store_true",
+	    help="Whether to end the program with a pause."
 	)
 	parser.add_argument(
 	    "program",
@@ -53,4 +60,5 @@ if __name__ == '__main__':
 
 	args = parser.parse_args()
 	runFile(args.program)
-	input('Press enter to continue...')
+	if args.inputend:
+		input('Press enter to continue...')
