@@ -91,3 +91,7 @@ Each input command in Bitwise has a corresponding output command:
 - `I<`: Outputs in decimal e.g. `110` &rarr; `6`
 - `H<`: Outputs in hexadecimal e.g. `1011` &rarr; `B`
 - `S<`: Outputs as ASCII e.g. `01100001` &rarr; `a`
+
+## Control Structures
+
+In Bitwise, there are 3 control structures: `-`, `~`, and `?`.
