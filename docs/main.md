@@ -84,3 +84,8 @@ There are 4 input commands:
 - `S>`: Takes in a string and converts it to its ASCII binary representation e.g. `a` &rarr; `01100001`
 
 ### Output
+Each input command in bitwise has a corresponding output command:
+- `<`: Ouputs in binary e.g. `101`
+- `I<`: Outputs in decimal e.g. `110` &rarr; `6`
+- `H<`: Outputs in hexadecimal e.g. `1011` &rarr; `B`
+- `S<`: Outputs as ASCII e.g. `01100001` &rarr; `a`
