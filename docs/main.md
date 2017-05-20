@@ -34,14 +34,14 @@ There are only a few unary operators in Bitwise, but each serves an important fu
 
 - `!` : The `NOT` operator. E.g. `!101` = `010`, or 2 in decimal;
 - `#` : The right-strip operator.
-	Removes the first digit of a number e.g. `#1101` = `101`
+  Removes the first digit of a number e.g. `#1101` = `101`
 - `$` : Returns the last digit of a number e.g. `$1110` = `0`
 - `£` : Returns the first digit of a number e.g. `£100` = `1`
 
-	*Bear in mind that this does not always return 1, because binary numbers in Bitwise are not automatically stripped of leading zeros.*
+  *Bear in mind that this does not always return 1, because binary numbers in Bitwise are not automatically stripped of leading zeros.*
 - `'` : This is largely used in loops to reference a counter.
-	`'n` refers to digit `"` of `n`, where `"` is the loop counter variable.
-	This is equivalent to the expression `n@"`
+  `'n` refers to digit `"` of `n`, where `"` is the loop counter variable.
+  This is equivalent to the expression `n@"`
 
 ## Binary Operators (pun intended)
 
@@ -60,15 +60,15 @@ Each of these has an opposite, equivalent to applying the `!` operator to the re
 Other operators:
 
 - `>>` : The right shift operator.
-	`a >> b` is equivalent to a/2<sup>b</sup> (rounded down) e.g. `10110 >> 11` = `10`
+  `a >> b` is equivalent to a/2<sup>b</sup> (rounded down) e.g. `10110 >> 11` = `10`
 - `<<` : The left shift operator.
-	`a << b` is equivalent to a\*2<sup>b</sup> e.g. `101 << 11` = `101000`
+  `a << b` is equivalent to a\*2<sup>b</sup> e.g. `101 << 11` = `101000`
 - `.` : The concatenation operator e.g. `101 . 111` = `101111`
 - `@` : The position operator.
-	`a@b` returns the digit of a at index b, starting from the units digit.
-	E.g. `100110 @ 11` = `1` (the third digit from the right)
+  `a@b` returns the digit of a at index b, starting from the units digit.
+  E.g. `100110 @ 11` = `1` (the third digit from the right)
 - `_` : The max operator.
-	Returns the maximum of its operands e.g. `11_1001` = `1001`
+  Returns the maximum of its operands e.g. `11_1001` = `1001`
 
 ## Input/Output
 
@@ -96,11 +96,11 @@ Each input command in Bitwise has a corresponding output command:
 Control Structures in Bitwise are used for code that should run multiple times, or conditionally.
 All control structures take the following form (indentation and spacing here are only for readability):
 
-	CON EXP
-		STATEMENT 1
-		STATEMENT 2
-		ETC.
-	;
+    CON EXP
+      STATEMENT 1
+      STATEMENT 2
+      ETC.
+    ;
 Here, `CON` represents the control identifier e.g. `?`.
 `EXP` should be replaced with some expression e.g. the check condition of an if-statement.
 In between the expression and the closing semicolon can be placed a series of commands,
@@ -116,9 +116,9 @@ and if this is true, runs the commands.
 For example, this code would check if the variable `a` is non-zero, and if so,
 prints out the hexadecimal value of `a` OR `b` (b is another variable).
 
-	?a
-		H< a+b
-	;
+    ?a
+      H< a+b
+    ;
 
 ### Digit Loops
 Digit loops iterate for each digit of the passed expression.
@@ -132,16 +132,16 @@ This can be used to reference back to the original expression with the `'` comma
 
 For example, this program iterates over the number `1011` and prints each digit, starting from the units column.
 
-	a = 1011
-	-a
-		< 'a
-	;
+    a = 1011
+    -a
+      < 'a
+    ;
 This program would output:
 
-	1
-	1
-	0
-	1
+    1
+    1
+    0
+    1
 
 #### Left-digit loop
 This loop, represented by the `~` character,
@@ -151,14 +151,14 @@ It decrements with each iteration.
 
 The program below iterates over the number `1011` and prints each digit in order.
 
-	a = 1011
-	~a
-		< 'a
-	;
+    a = 1011
+    ~a
+      < 'a
+    ;
 
 This program would output:
 
-	1
-	0
-	1
-	1
+    1
+    0
+    1
+    1
