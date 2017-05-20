@@ -103,7 +103,7 @@ def uniopParser(tkens, pos):
 		return Token(value=tkens[pos].value, tag='UNIOPEXP', args=tkens[pos+1])
 	else: return None
 
-@ParseRunner(2):
+@ParseRunner(2)
 def iStateParser(tkens, pos):
 	if (tkens[pos].tag==IOSTATE and
 		tkens[pos].value[-1]=='>' and
