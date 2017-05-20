@@ -1,6 +1,6 @@
 from .basefuncs import *
 try:
-	from funnctional import compose
+	from functional import compose
 except ImportError:
 	raiseErrN("You need functional!\nInstall it from http://pypi.python.org/pypi/functional\nor run pip install functional.")
 
