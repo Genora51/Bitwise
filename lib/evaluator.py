@@ -104,3 +104,4 @@ def doCond(st, varl):
 def runStates(tls, varls=vl()):
 	for t in tls:
 		stateRun(t,varls)
+	return varls

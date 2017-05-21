@@ -8,10 +8,12 @@ import hashlib
 def h11(w):
     return hashlib.md5(w.encode()).hexdigest()[:9]
 
-def interpret(text):
+def interpret(text, vals = None):
 	lexed = lex(text, tokens)
 	parsed = Parse(lexed)
-	evaluate(parsed)
+	if vals is None:
+		return evaluate(parsed)
+	else: return evaluate(parsed,vals)
 
 def runFile(fileName):
 	dirf = os.path.dirname(os.path.realpath(fileName))
@@ -40,25 +42,49 @@ def parsNo(mtxt,dirs,cach):
 		f.write(pt)
 	return parsed
 
+def runCmd(args):
+	runFile(args.program)
+	if args.inputend:
+		input('Press enter to continue...')
+
+def shell(args):
+	ext = False
+	vs = None
+	print("Bitwise Shell")
+	print("-"*20)
+	while not ext:
+		inp = input('-> ')
+		ext = inp == "exit"
+		if not ext:
+			if vs is not None:
+				vs = interpret(inp)
+			else: vs = interpret(inp, vs)
+
 if __name__ == '__main__':
 	import argparse
 
 	# ...
 	parser = argparse.ArgumentParser(
-	    description="Runs a Bitwise (.bit) program."
+	    description="Interpreter for the Bitwise Language."
 	)
-	parser.add_argument(
+	
+	pars = parser.add_subparsers()
+	rg = pars.add_parser('run', help='Run a Bitwise (.bit) program.')
+	rg.add_argument(
 	    "-i",
 	    "--inputend",
 	    action="store_true",
 	    help="Whether to end the program with a pause."
 	)
-	parser.add_argument(
+	rg.add_argument(
 	    "program",
 	    help="The path of the program to be run."
 	)
-
+	rg.set_defaults(func=runCmd)
+	sg = pars.add_parser('shell', help="Run a Bitwise shell.")
+	sg.set_defaults(func=shell)
 	args = parser.parse_args()
-	runFile(args.program)
-	if args.inputend:
-		input('Press enter to continue...')
+	try:
+		args.func(args)
+	except AttributeError:
+		args = parser.parse_args(['-h'])
