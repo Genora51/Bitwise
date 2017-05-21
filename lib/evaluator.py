@@ -46,7 +46,7 @@ class vl(dict):
 	def __getitem__(self, index):
 		try:
 			return dict.__getitem__(self, index)
-		except IndexError:
+		except KeyError:
 			raiseErrN('ReferenceError: Variable \'%s\' referenced before assignment.'%(index))
 
 def litEval(t):

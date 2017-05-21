@@ -47,7 +47,6 @@ def condParser(ts):
 		if tok.tag == ENDCON:
 			stops.append(p)
 			toks.append(tok)
-			#print(ts[-p], p)
 		elif tok.tag == CONDSTATE:
 			try:
 				end = -stops.pop()
@@ -123,11 +122,13 @@ runParser = uniopParser + iStateParser + biopParser + parenParser
 stateParse = oStateParser + asopParser + condParser
 
 def Parse(tokenlist):
+	tokenlist.append(Token('',''))
 	origr = ''
 	while origr != repr(tokenlist):
 		origr = repr(tokenlist)
 		tokenlist = runParser(tokenlist)
 	tokenlist = stateParse(tokenlist)
+	tokenlist.pop()
 	tst = [a for a in tokenlist if a.tag in (LPAREN, RPAREN)]
 	if tst != []:
 		ParserError("Unmatched Parenthesis", tst[0])
