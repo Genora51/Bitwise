@@ -49,16 +49,24 @@ def runCmd(args):
 
 def shell(args):
 	ext = False
+	sysex = False
 	vs = None
 	print("Bitwise Shell")
 	print("-"*20)
 	while not ext:
-		inp = input('-> ')
+		if sysex:
+			sysex = False
+			inp = input('\n-> ')
+		else:
+			inp = input('-> ')
 		ext = inp == "exit"
-		if not ext:
-			if vs is not None:
-				vs = interpret(inp)
-			else: vs = interpret(inp, vs)
+		try:
+			if not ext:
+				if vs is not None:
+					vs = interpret(inp)
+				else: vs = interpret(inp, vs)
+		except SystemExit:
+			sysex = True
 
 if __name__ == '__main__':
 	import argparse
