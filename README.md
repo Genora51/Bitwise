@@ -26,7 +26,7 @@ However, if this option was not checked, if the portable version is being used,
 or if you simply prefer the command line,
 this command should be used:
 
-    bitwise [filename.bit]
+    bitwise run [filename.bit]
 
 `[filename.bit]` should be replaced with the path or name of the bitwise program you wish to run.
 If `bitwise` is not a recognised command, replace it with the path of `bitwise.exe`.
@@ -35,7 +35,7 @@ If `bitwise` is not a recognised command, replace it with the path of `bitwise.e
 
 To run a bitwise file with python, use this command:
 
-    python bitwise.py [filename.bit]
+    python bitwise.py run [filename.bit]
 
 If not run from the bitwise folder, replace `bitwise.py` with the full (or relative path of the `bitwise.py` file).
 
