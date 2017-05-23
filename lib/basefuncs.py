@@ -15,8 +15,7 @@ def raiseErr(message, pos=(0,0)):
 	raiseErrN(message + " on line %s, position %s." %(pos[0],pos[1]))
 
 def raiseErrN(message):
-	sys.stderr.write(message)
-	sys.exit(0)
+	sys.exit(message)
 
 BIOP = 'BIOP'
 UNIOP = 'UNIOP'

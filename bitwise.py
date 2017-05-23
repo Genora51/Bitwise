@@ -2,7 +2,7 @@ from lib.bitparser import Parse
 from lib.lexer import lex
 from lib.basefuncs import Token, tokens
 import os
-from lib.evaluator import runStates as evaluate
+from lib.evaluator import runStates as evaluate, expEval
 import hashlib
 
 def h11(w):
@@ -14,6 +14,9 @@ def interpret(text, vals = None):
 	if vals is None:
 		return evaluate(parsed)
 	else: return evaluate(parsed,vals)
+
+def interpretExp(text, vals = None):
+	interpret('<' + text, vals)
 
 def runFile(fileName):
 	dirf = os.path.dirname(os.path.realpath(fileName))
@@ -49,24 +52,25 @@ def runCmd(args):
 
 def shell(args):
 	ext = False
-	sysex = False
 	vs = None
 	print("Bitwise Shell")
 	print("-"*20)
 	while not ext:
-		if sysex:
-			sysex = False
-			inp = input('\n-> ')
-		else:
-			inp = input('-> ')
+		inp = input('-> ')
 		ext = inp == "exit"
 		try:
 			if not ext:
 				if vs is not None:
 					vs = interpret(inp)
 				else: vs = interpret(inp, vs)
-		except SystemExit:
-			sysex = True
+		except SystemExit as e:
+			if e.args[0].startswith('ParserError: Unused '):
+				try:
+					interpretExp(inp,vs)
+				except SystemExit as er:
+					print(er.args[0])
+			else:
+				print(e.args[0])
 
 if __name__ == '__main__':
 	import argparse
