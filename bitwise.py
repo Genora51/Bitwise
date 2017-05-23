@@ -1,3 +1,17 @@
+"""Bitwise.
+
+Usage:
+  bitwise [-h] ([-i] PROGRAM | -s)
+
+
+Options:
+  -h --help      Show this screen.
+  --version      Show version.
+  -i --inputend  Whether to pause at the end.
+  -s --shell     Run a Bitwise Shell
+
+"""
+
 from lib.bitparser import Parse
 from lib.lexer import lex
 from lib.basefuncs import Token, tokens
