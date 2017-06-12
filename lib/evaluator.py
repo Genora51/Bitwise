@@ -26,7 +26,7 @@ inputs = {
     'I>': 'Integer',
     'S>': 'String',
     'H>': 'Hex',
-    '>': 'Bitary'
+    '>': 'Binary'
 }
 inputf = {
     'I>': lambda x: bin(int(x))[2:],

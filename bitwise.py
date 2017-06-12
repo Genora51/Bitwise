@@ -17,7 +17,7 @@ Options:
 
 from lib.bitparser import Parse
 from lib.lexer import lex
-from lib.basefuncs import tokens, raiseErrN
+from lib.basefuncs import tokens, raiseErrN, Token
 import os
 from lib.evaluator import runStates as evaluate
 import hashlib
