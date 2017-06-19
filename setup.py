@@ -13,7 +13,7 @@ setup(
     author="Geno Racklin Asher",
     options={
     	'build_exe': {
-	        'includes': ['lib'],
+	        'includes': ['blib'],
 	    }
     },
     executables=[target]
