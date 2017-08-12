@@ -19,6 +19,7 @@ from blib.bitparser import Parse
 from blib.lexer import lex
 from blib.basefuncs import tokens, raiseErrN, Token
 import os
+import pickle
 from blib.evaluator import runStates as evaluate
 import hashlib
 
@@ -45,11 +46,13 @@ def runFile(fileName):
     cach = r"%s\__bitcache__\%sc" % (dirf, os.path.basename(fileName))
     mtxt = open(fileName).read()
     if os.path.isfile(cach):
-        hashed, ptext = open(cach).read().split('\n')
-        if h11(mtxt) == hashed:
-            parsed = eval(ptext)
+        f = open(cach, 'rb')
+        hashed = f.readline()
+        if h11(mtxt) == str(hashed):
+            parsed = pickle.load(f)
         else:
             parsed = parsNo(mtxt, dirf, cach)
+        f.close()
     else:
         parsed = parsNo(mtxt, dirf, cach)
     evaluate(parsed)
@@ -62,10 +65,9 @@ def parsNo(mtxt, dirs, cach):
         pass
     lexed = lex(mtxt, tokens)
     parsed = Parse(lexed)
-    with open(cach, 'w') as f:
-        pt = repr(parsed)
+    with open(cach, 'wb') as f:
         f.write(h11(mtxt) + '\n')
-        f.write(pt)
+        pickle.dump(parsed, f)
     return parsed
 
 
