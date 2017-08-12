@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from .basefuncs import *
 from .classbit import Bit
 

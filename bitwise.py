@@ -43,11 +43,11 @@ def interpretExp(text, vals=None):
 
 def runFile(fileName):
     dirf = os.path.dirname(os.path.realpath(fileName))
-    cach = r"%s\__bitcache__\%sc" % (dirf, os.path.basename(fileName))
+    cach = r"%s/__bitcache__/%sc" % (dirf, os.path.basename(fileName))
     mtxt = open(fileName).read()
     if os.path.isfile(cach):
         f = open(cach, 'rb')
-        hashed = f.readline()
+        hashed = pickle.load(f)
         if h11(mtxt) == str(hashed):
             parsed = pickle.load(f)
         else:
@@ -60,13 +60,13 @@ def runFile(fileName):
 
 def parsNo(mtxt, dirs, cach):
     try:
-        os.mkdir(dirs + r"\__bitcache__")
+        os.mkdir(dirs + r"/__bitcache__")
     except OSError:
         pass
     lexed = lex(mtxt, tokens)
     parsed = Parse(lexed)
     with open(cach, 'wb') as f:
-        f.write(h11(mtxt) + '\n')
+        pickle.dump(h11(mtxt), f)
         pickle.dump(parsed, f)
     return parsed
 
