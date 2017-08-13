@@ -19,7 +19,10 @@ from blib.bitparser import Parse
 from blib.lexer import lex
 from blib.basefuncs import tokens, raiseErrN, Token
 import os
+import atexit
+from os.path import expanduser
 import pickle
+import readline
 from blib.evaluator import runStates as evaluate
 import hashlib
 
@@ -76,8 +79,20 @@ def runCmd(args):
     if args['--inputend']:
         input('Press enter to continue...')
 
+def save(prev_h_len, histfile):
+    new_h_len = readline.get_history_length()
+    readline.set_history_length(1000)
+    readline.append_history_file(new_h_len - prev_h_len, histfile)
 
 def shell(args):
+    home = expanduser("~")
+    histfile = os.path.join(os.path.expanduser("~"), ".python_history")
+    try:
+        readline.read_history_file(histfile)
+    except FileNotFoundError:
+        pass
+
+    atexit.register(readline.write_history_file, histfile)
     ext = False
     vs = None
     print("Bitwise Shell")
