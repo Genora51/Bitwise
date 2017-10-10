@@ -12,9 +12,9 @@ setup(
     description="Bitwise Language",
     author="Geno Racklin Asher",
     options={
-    	'build_exe': {
-	        'includes': ['blib'],
-	    }
+        'build_exe': {
+            'includes': ['blib'],
+        }
     },
     executables=[target]
     )

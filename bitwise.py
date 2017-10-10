@@ -81,10 +81,12 @@ def runCmd(args):
     if args['--inputend']:
         input('Press enter to continue...')
 
+
 def save(prev_h_len, histfile):
     new_h_len = readline.get_history_length()
     readline.set_history_length(1000)
     readline.append_history_file(new_h_len - prev_h_len, histfile)
+
 
 def shell(args):
     home = expanduser("~")
@@ -123,7 +125,10 @@ if __name__ == '__main__':
         from docopt import docopt
     except ImportError:
         raiseErrN(
-            "You need docopt!\nInstall it from http://pypi.python.org/pypi/docopt\nor run pip install docopt.")
+            "You need docopt!\n"
+            "Install it from http://pypi.python.org/pypi/docopt\n"
+            "or run pip install docopt."
+        )
 
     arguments = docopt(__doc__, version='Bitwise 0.0.3')
     if arguments['--shell']:
